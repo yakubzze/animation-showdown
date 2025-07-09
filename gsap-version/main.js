@@ -1,3 +1,6 @@
+// Import styles
+import './style.scss';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import * as THREE from 'three';

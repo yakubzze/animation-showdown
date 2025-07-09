@@ -1,3 +1,6 @@
+// Import styles
+import './styles/main.scss';
+
 // Main JavaScript for the comparison page
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links

@@ -1,3 +1,6 @@
+// Import styles
+import './style.scss';
+
 import * as THREE from 'three';
 
 // Import performance monitoring
