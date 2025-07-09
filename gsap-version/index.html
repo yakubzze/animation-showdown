@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Animation Implementation | Animation Approaches Comparison</title>
+    <meta name="description" content="GSAP implementation showcasing ScrollTrigger, stagger animations, SVG path drawing, and ThreeJS integration">
+    <meta name="author" content="Jakub Gietler">
+    <meta name="keywords" content="gsap, animation, scrolltrigger, three.js, web animation, stagger animations, svg animations">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="../">
+    <meta property="og:title" content="GSAP Animation Implementation | Animation Approaches Comparison">
+    <meta property="og:description" content="GSAP implementation showcasing ScrollTrigger, stagger animations, SVG path drawing, and ThreeJS integration">
+    <meta property="og:image" content="../og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="../">
+    <meta property="twitter:title" content="GSAP Animation Implementation | Animation Approaches Comparison">
+    <meta property="twitter:description" content="GSAP implementation showcasing ScrollTrigger, stagger animations, SVG path drawing, and ThreeJS integration">
+    <meta property="twitter:image" content="../og-image.png">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GSAP Animation Implementation",
+        "description": "GSAP implementation showcasing ScrollTrigger, stagger animations, SVG path drawing, and ThreeJS integration",
+        "url": "../",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Jakub Gietler"
+        },
+        "keywords": ["gsap", "animation", "scrolltrigger", "three.js", "web animation", "stagger animations", "svg animations"]
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.scss">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+</head>
+<body>
+    <div class="app">
+        <!-- Header with back navigation -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="../" class="back-link">
+                            <svg class="back-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            Back
+                        </a>
+                        <div class="logo-main">
+                            <div class="logo-icon">G</div>
+                            <h1 class="logo-text">GSAP Library Approach</h1>
+                        </div>
+                    </div>
+                    <nav class="nav">
+                        <a href="#hero" class="nav-link">Hero</a>
+                        <a href="#stagger" class="nav-link">Stagger</a>
+                        <a href="#path" class="nav-link">SVG Path</a>
+                        <a href="#threejs" class="nav-link">ThreeJS</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section with ScrollTrigger -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">
+                            <span class="title-line">GSAP</span>
+                            <span class="title-line">Animation</span>
+                            <span class="title-line">Approach</span>
+                        </h2>
+                        <p class="hero-subtitle">
+                            Demonstrating the power of GSAP with ScrollTrigger, 
+                            timeline-based animations, and seamless ThreeJS integration.
+                        </p>
+                        <div class="hero-features">
+                            <div class="feature-tag">Timeline Control</div>
+                            <div class="feature-tag">ScrollTrigger</div>
+                            <div class="feature-tag">Easing Functions</div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-elements">
+                            <!-- Central particle system -->
+                            <div class="particle-system">
+                                <div class="particle" data-index="0"></div>
+                                <div class="particle" data-index="1"></div>
+                                <div class="particle" data-index="2"></div>
+                                <div class="particle" data-index="3"></div>
+                                <div class="particle" data-index="4"></div>
+                                <div class="particle" data-index="5"></div>
+                                <div class="particle" data-index="6"></div>
+                                <div class="particle" data-index="7"></div>
+                                <div class="particle" data-index="8"></div>
+                                <div class="particle" data-index="9"></div>
+                                <div class="particle" data-index="10"></div>
+                                <div class="particle" data-index="11"></div>
+                                <div class="particle" data-index="12"></div>
+                                <div class="particle" data-index="13"></div>
+                                <div class="particle" data-index="14"></div>
+                                <div class="particle" data-index="15"></div>
+                                <div class="particle" data-index="16"></div>
+                                <div class="particle" data-index="17"></div>
+                                <div class="particle" data-index="18"></div>
+                                <div class="particle" data-index="19"></div>
+                            </div>
+                            
+                            <!-- Orbital elements -->
+                            <div class="orbital-system">
+                                <div class="orbit orbit-1">
+                                    <div class="orbital-element" data-speed="1.2">
+                                        <div class="element-circle"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="1.8">
+                                        <div class="element-square"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="2.4">
+                                        <div class="element-triangle"></div>
+                                    </div>
+                                </div>
+                                <div class="orbit orbit-2">
+                                    <div class="orbital-element" data-speed="0.8">
+                                        <div class="element-diamond"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="1.5">
+                                        <div class="element-star"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="2.1">
+                                        <div class="element-hexagon"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="2.7">
+                                        <div class="element-cross"></div>
+                                    </div>
+                                </div>
+                                <div class="orbit orbit-3">
+                                    <div class="orbital-element" data-speed="0.6">
+                                        <div class="element-pentagon"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="1.3">
+                                        <div class="element-octagon"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="2.0">
+                                        <div class="element-circle-small"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="2.6">
+                                        <div class="element-square-small"></div>
+                                    </div>
+                                    <div class="orbital-element" data-speed="3.2">
+                                        <div class="element-triangle-small"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating geometric shapes -->
+                            <div class="geometric-shapes">
+                                <div class="shape shape-1" data-speed="0.5">
+                                    <div class="shape-inner"></div>
+                                </div>
+                                <div class="shape shape-2" data-speed="0.8">
+                                    <div class="shape-inner"></div>
+                                </div>
+                                <div class="shape shape-3" data-speed="1.2">
+                                    <div class="shape-inner"></div>
+                                </div>
+                                <div class="shape shape-4" data-speed="0.7">
+                                    <div class="shape-inner"></div>
+                                </div>
+                                <div class="shape shape-5" data-speed="1.0">
+                                    <div class="shape-inner"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Energy waves -->
+                            <div class="energy-waves">
+                                <div class="wave wave-1"></div>
+                                <div class="wave wave-2"></div>
+                                <div class="wave wave-3"></div>
+                            </div>
+                            
+                            <!-- Connection lines -->
+                            <svg class="connection-lines" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#88ce02;stop-opacity:0.3" />
+                                        <stop offset="50%" style="stop-color:#5fa000;stop-opacity:0.6" />
+                                        <stop offset="100%" style="stop-color:#88ce02;stop-opacity:0.3" />
+                                    </linearGradient>
+                                </defs>
+                                <path class="connection-line" d="M200,300 Q400,200 600,300" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                                <path class="connection-line" d="M150,250 Q400,350 650,250" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                                <path class="connection-line" d="M250,350 Q400,150 550,350" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stagger Animation Section -->
+        <section id="stagger" class="stagger-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Stagger Animations</h2>
+                    <p class="section-subtitle">
+                        Sequential animations with customizable timing and easing
+                    </p>
+                </div>
+                <div class="stagger-grid">
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">01</div>
+                            <h3 class="item-title">Timeline Control</h3>
+                            <p class="item-description">
+                                GSAP's timeline provides precise control over animation sequences
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">02</div>
+                            <h3 class="item-title">Easing Functions</h3>
+                            <p class="item-description">
+                                Advanced easing options for natural motion patterns
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">03</div>
+                            <h3 class="item-title">Performance</h3>
+                            <p class="item-description">
+                                Optimized for 60fps with hardware acceleration
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">04</div>
+                            <h3 class="item-title">ScrollTrigger</h3>
+                            <p class="item-description">
+                                Scroll-based animations with precise triggers
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">05</div>
+                            <h3 class="item-title">Morphing</h3>
+                            <p class="item-description">
+                                Shape and path morphing capabilities
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stagger-item">
+                        <div class="item-content">
+                            <div class="item-number">06</div>
+                            <h3 class="item-title">Cross-browser</h3>
+                            <p class="item-description">
+                                Consistent performance across all browsers
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SVG Path Animation Section -->
+        <section id="path" class="path-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">SVG Path Animation</h2>
+                    <p class="section-subtitle">
+                        Animated drawing effects with precise path control
+                    </p>
+                </div>
+                <div class="path-content">
+                    <div class="path-visual">
+                        <svg class="drawing-svg" viewBox="0 0 800 400">
+                            <defs>
+                                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Complex path for drawing animation -->
+                            <path class="draw-path" 
+                                  d="M50,200 Q200,100 350,200 T650,200 Q700,150 750,200" 
+                                  stroke="url(#pathGradient)" 
+                                  stroke-width="4" 
+                                  fill="none"
+                                  filter="url(#glow)"/>
+                            
+                            <!-- Animated dots along the path -->
+                            <circle class="path-dot" cx="50" cy="200" r="6" fill="#6366f1"/>
+                            <circle class="path-dot" cx="350" cy="200" r="6" fill="#8b5cf6"/>
+                            <circle class="path-dot" cx="650" cy="200" r="6" fill="#06b6d4"/>
+                            
+                            <!-- Animated text along path -->
+                            <text class="path-text" x="430" y="190" fill="#374151" font-family="Inter, sans-serif" font-size="14" font-weight="600">
+                                SVG Path Animation
+                            </text>
+                        </svg>
+                    </div>
+                    <div class="path-controls">
+                        <button class="control-btn" id="playPath">Play Animation</button>
+                        <button class="control-btn" id="reversePath">Reverse</button>
+                        <button class="control-btn" id="restartPath">Restart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ThreeJS Integration Section -->
+        <section id="threejs" class="threejs-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">ThreeJS Integration</h2>
+                    <p class="section-subtitle">
+                        3D animations synchronized with GSAP timelines
+                    </p>
+                </div>
+                <div class="threejs-content">
+                    <div class="threejs-canvas-container">
+                        <canvas id="threejs-canvas"></canvas>
+                        <div class="canvas-overlay">
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">FPS</span>
+                                    <span class="stat-value" id="fps">60</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Triangles</span>
+                                    <span class="stat-value">2.4k</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="threejs-controls">
+                        <div class="control-group">
+                            <label class="control-label">Rotation Speed</label>
+                            <input type="range" id="rotationSpeed" min="0" max="10" value="1" step="0.1" class="control-slider">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Animation Scale</label>
+                            <input type="range" id="animationScale" min="0.5" max="3" value="1" step="0.1" class="control-slider">
+                        </div>
+                        <div class="control-group">
+                            <button class="control-btn" id="changeColor">Change Color</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics Section removed for cleaner layout -->
+
+        <!-- Code Examples Section -->
+        <section class="code-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Code Examples</h2>
+                    <p class="section-subtitle">
+                        Key GSAP implementation patterns used in this demo
+                    </p>
+                </div>
+                <div class="code-examples">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <h3 class="code-title">ScrollTrigger Setup</h3>
+                        </div>
+                        <pre class="code-block" id="gsap-scroll"><code>// ScrollTrigger animation
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".stagger-item", { 
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".stagger-section",
+    start: "top 80%",
+    end: "bottom 20%",
+    toggleActions: "play none none reverse"
+  }
+});</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <h3 class="code-title">SVG Path Animation</h3>
+                        </div>
+                        <pre class="code-block" id="gsap-path"><code>// SVG path drawing
+const path = document.querySelector('.draw-path');
+const pathLength = path.getTotalLength();
+
+gsap.set(path, {
+  strokeDasharray: pathLength,
+  strokeDashoffset: pathLength
+});
+
+gsap.to(path, {
+  strokeDashoffset: 0,
+  duration: 3,
+  ease: "power2.inOut"
+});</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <h3 class="code-title">ThreeJS Integration</h3>
+                        </div>
+                        <pre class="code-block" id="gsap-threejs"><code>// ThreeJS with GSAP
+gsap.to(mesh.rotation, {
+  x: Math.PI * 2,
+  y: Math.PI * 2,
+  duration: 4,
+  ease: "power2.inOut",
+  repeat: -1,
+  yoyo: true
+});
+
+gsap.to(mesh.scale, {
+  x: 1.5,
+  y: 1.5,
+  z: 1.5,
+  duration: 2,
+  ease: "elastic.out(1, 0.3)"
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4 class="footer-title">GSAP Implementation</h4>
+                        <p class="footer-description">
+                            Animation implementation showcasing GSAP's capabilities
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Features</h4>
+                        <ul class="footer-links">
+                            <li>ScrollTrigger Integration</li>
+                            <li>Stagger Animations</li>
+                            <li>SVG Path Drawing</li>
+                            <li>ThreeJS Integration</li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://gsap.com" target="_blank">GSAP Documentation</a></li>
+                            <li><a href="../">Back to Comparison</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Jakub Gietler. MIT License.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

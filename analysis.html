@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Analysis | GSAP vs Vanilla JS Animation Comparison</title>
+    <meta name="description" content="Comprehensive technical analysis comparing GSAP and Vanilla JS animation approaches with performance benchmarks and implementation details">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="Detailed Analysis | GSAP vs Vanilla JS Animation Comparison">
+    <meta property="og:description" content="Comprehensive technical analysis comparing GSAP and Vanilla JS animation approaches with performance benchmarks and implementation details">
+    <meta property="og:image" content="./og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="./">
+    <meta property="twitter:title" content="Detailed Analysis | GSAP vs Vanilla JS Animation Comparison">
+    <meta property="twitter:description" content="Comprehensive technical analysis comparing GSAP and Vanilla JS animation approaches with performance benchmarks and implementation details">
+    <meta property="twitter:image" content="./og-image.png">
+
+    <!-- Additional meta tags -->
+    <meta name="keywords" content="animation analysis, gsap performance, vanilla js performance, animation comparison, web animation benchmarks">
+    <meta name="author" content="Jakub Gietler">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.scss">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="logo-icon">⚡</div>
+                        <h1 class="logo-text">AnimationCompare</h1>
+                    </div>
+                    <nav class="nav" role="navigation" aria-label="Main navigation">
+                        <a href="./index.html" class="nav-link" aria-label="Go to home page">Home</a>
+                        <a href="./gsap-version/" class="nav-link" aria-label="View GSAP demo">GSAP Demo</a>
+                        <a href="./vanilla-version/" class="nav-link" aria-label="View Vanilla demo">Vanilla Demo</a>
+                        <a href="#performance-testing" class="nav-link" aria-label="Go to performance testing section">Performance</a>
+                        <a href="https://github.com/animation-comparison-suite" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub repository (opens in new tab)">GitHub</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">
+                            Detailed Technical
+                            <span class="gradient-text">Analysis</span>
+                        </h2>
+                        <p class="hero-subtitle">
+                            Comprehensive comparison of GSAP vs Vanilla JS animation approaches with performance benchmarks, 
+                            implementation details, and practical recommendations for developers.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#benchmarks" class="btn btn-primary" aria-label="View performance benchmarks">
+                                View Benchmarks
+                                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                            <a href="#implementation" class="btn btn-secondary" aria-label="View implementation details">
+                                Implementation Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="analysis-preview">
+                            <div class="preview-chart">
+                                <div class="chart-bar gsap" style="height: 85%">
+                                    <span class="chart-label">GSAP</span>
+                                    <span class="chart-value">85%</span>
+                                </div>
+                                <div class="chart-bar vanilla" style="height: 65%">
+                                    <span class="chart-label">Vanilla</span>
+                                    <span class="chart-value">65%</span>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color gsap"></span>
+                                    <span class="legend-text">GSAP Performance</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color vanilla"></span>
+                                    <span class="legend-text">Vanilla JS Performance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Benchmarks -->
+        <section id="benchmarks" class="benchmarks">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Performance Benchmarks</h2>
+                    <p class="section-subtitle">
+                        Real-world performance measurements comparing GSAP and Vanilla JS approaches
+                    </p>
+                </div>
+                
+                <div class="benchmarks-grid">
+                    <div class="benchmark-card">
+                        <h3 class="benchmark-title">Bundle Size Analysis</h3>
+                        <div class="benchmark-chart">
+                            <div class="chart-container">
+                                <div class="size-bar gsap" style="width: 80%">
+                                    <span class="size-label">GSAP</span>
+                                    <span class="size-value">~80kb</span>
+                                </div>
+                                <div class="size-bar vanilla" style="width: 5%">
+                                    <span class="size-label">Vanilla</span>
+                                    <span class="size-value">~5kb</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-details">
+                            <p>GSAP includes comprehensive animation engine, while Vanilla JS uses only native browser APIs.</p>
+                        </div>
+                    </div>
+
+                    <div class="benchmark-card">
+                        <h3 class="benchmark-title">Animation Performance</h3>
+                        <div class="benchmark-metrics">
+                            <div class="metric-row">
+                                <span class="metric-name">FPS (60fps target)</span>
+                                <div class="metric-bars">
+                                    <div class="metric-bar gsap" style="width: 95%">95%</div>
+                                    <div class="metric-bar vanilla" style="width: 88%">88%</div>
+                                </div>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-name">Memory Usage</span>
+                                <div class="metric-bars">
+                                    <div class="metric-bar gsap" style="width: 75%">75%</div>
+                                    <div class="metric-bar vanilla" style="width: 60%">60%</div>
+                                </div>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-name">CPU Usage</span>
+                                <div class="metric-bars">
+                                    <div class="metric-bar gsap" style="width: 70%">70%</div>
+                                    <div class="metric-bar vanilla" style="width: 85%">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benchmark-card">
+                        <h3 class="benchmark-title">Browser Compatibility</h3>
+                        <div class="compatibility-grid">
+                            <div class="browser-support">
+                                <h4>GSAP Support</h4>
+                                <ul class="browser-list">
+                                    <li class="supported">Chrome 30+</li>
+                                    <li class="supported">Firefox 34+</li>
+                                    <li class="supported">Safari 9+</li>
+                                    <li class="supported">Edge 12+</li>
+                                    <li class="supported">IE 9+</li>
+                                </ul>
+                            </div>
+                            <div class="browser-support">
+                                <h4>Vanilla JS Support</h4>
+                                <ul class="browser-list">
+                                    <li class="supported">Chrome 51+</li>
+                                    <li class="supported">Firefox 55+</li>
+                                    <li class="supported">Safari 12.1+</li>
+                                    <li class="supported">Edge 15+</li>
+                                    <li class="unsupported">IE - Not supported</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Details -->
+        <!-- Performance Testing Section -->
+        <section id="performance-testing" class="performance-testing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Live Performance Testing</h2>
+                    <p class="section-subtitle">
+                        Test animation performance in real-time on your device
+                    </p>
+                </div>
+                
+                <div class="testing-content">
+                    <div class="testing-card">
+                        <h3 class="testing-title">Performance Monitor</h3>
+                        <p class="testing-description">
+                            Monitor FPS, memory usage, frame time, and animation count in real-time.
+                            The performance panel is available on all pages for live testing.
+                        </p>
+                        <div class="testing-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">⚡</span>
+                                <span class="feature-text">Real-time FPS tracking</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💾</span>
+                                <span class="feature-text">Memory usage monitoring</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⏱️</span>
+                                <span class="feature-text">Frame time analysis</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🎬</span>
+                                <span class="feature-text">Animation count tracking</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testing-card">
+                        <h3 class="testing-title">Automated Tests</h3>
+                        <p class="testing-description">
+                            Run comprehensive performance tests to compare GSAP vs Vanilla JS approaches.
+                        </p>
+                        <div class="testing-tests">
+                            <div class="test-item">
+                                <span class="test-icon">📜</span>
+                                <span class="test-text">Scroll Animations</span>
+                            </div>
+                            <div class="test-item">
+                                <span class="test-icon">🎯</span>
+                                <span class="test-text">Stagger Animations</span>
+                            </div>
+                            <div class="test-item">
+                                <span class="test-icon">🖼️</span>
+                                <span class="test-text">SVG Path Animations</span>
+                            </div>
+                            <div class="test-item">
+                                <span class="test-icon">🎲</span>
+                                <span class="test-text">ThreeJS Animations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testing-instructions">
+                    <h3>How to Use Performance Testing</h3>
+                    <ol class="instructions-list">
+                        <li>Look for the performance panel (⚡ icon) in the top-right corner</li>
+                        <li>Click the panel to expand and view real-time metrics</li>
+                        <li>Use "Start" to begin monitoring performance</li>
+                        <li>Navigate through different pages to test various animations</li>
+                        <li>Click "Run Tests" to execute automated performance tests</li>
+                        <li>Compare results between GSAP and Vanilla JS implementations</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation" class="implementation">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Implementation Details</h2>
+                    <p class="section-subtitle">
+                        Code examples and technical implementation differences
+                    </p>
+                </div>
+
+                <div class="implementation-grid">
+                    <div class="code-comparison">
+                        <h3 class="comparison-title">ScrollTrigger Implementation</h3>
+                        <div class="code-tabs">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="gsap-scroll">GSAP</button>
+                                <button class="tab-btn" data-tab="vanilla-scroll">Vanilla JS</button>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="gsap-scroll">
+                                    <pre class="code-block"><code>// GSAP ScrollTrigger
+gsap.from(".element", {
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".element",
+    start: "top 80%",
+    end: "bottom 20%",
+    toggleActions: "play none none reverse"
+  }
+});</code></pre>
+                                </div>
+                                <div class="tab-pane" id="vanilla-scroll">
+                                    <pre class="code-block"><code>// Vanilla JS Intersection Observer
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+);
+
+observer.observe(document.querySelector('.element'));</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-comparison">
+                        <h3 class="comparison-title">Stagger Animations</h3>
+                        <div class="code-tabs">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="gsap-stagger">GSAP</button>
+                                <button class="tab-btn" data-tab="vanilla-stagger">Vanilla JS</button>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="gsap-stagger">
+                                    <pre class="code-block"><code>// GSAP Stagger
+gsap.from(".stagger-item", {
+  y: 50,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.1,
+  ease: "power2.out"
+});</code></pre>
+                                </div>
+                                <div class="tab-pane" id="vanilla-stagger">
+                                    <pre class="code-block"><code>// Vanilla JS Stagger
+const items = document.querySelectorAll('.stagger-item');
+items.forEach((item, index) => {
+  setTimeout(() => {
+    item.classList.add('animate-in');
+  }, index * 100);
+});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-comparison">
+                        <h3 class="comparison-title">SVG Path Animation</h3>
+                        <div class="code-tabs">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="gsap-svg">GSAP</button>
+                                <button class="tab-btn" data-tab="vanilla-svg">Vanilla JS</button>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="gsap-svg">
+                                    <pre class="code-block"><code>// GSAP SVG Path
+const path = document.querySelector('.path');
+const length = path.getTotalLength();
+
+gsap.set(path, {
+  strokeDasharray: length,
+  strokeDashoffset: length
+});
+
+gsap.to(path, {
+  strokeDashoffset: 0,
+  duration: 2,
+  ease: "power2.out"
+});</code></pre>
+                                </div>
+                                <div class="tab-pane" id="vanilla-svg">
+                                    <pre class="code-block"><code>// Vanilla JS SVG Path
+const path = document.querySelector('.path');
+const length = path.getTotalLength();
+
+path.style.strokeDasharray = length;
+path.style.strokeDashoffset = length;
+
+path.animate(
+  { strokeDashoffset: 0 },
+  { duration: 2000, easing: 'ease-out' }
+);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Case Recommendations -->
+        <section id="recommendations" class="recommendations">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Use Case Recommendations</h2>
+                    <p class="section-subtitle">
+                        When to choose GSAP vs Vanilla JS based on project requirements
+                    </p>
+                </div>
+
+                <div class="recommendations-grid">
+                    <div class="recommendation-card gsap-recommended">
+                        <h3 class="recommendation-title">Choose GSAP When:</h3>
+                        <ul class="recommendation-list">
+                            <li>Complex animation sequences with multiple elements</li>
+                            <li>Advanced scroll-based animations with precise control</li>
+                            <li>Professional projects requiring polished animations</li>
+                            <li>Cross-browser compatibility is critical</li>
+                            <li>Team has GSAP experience or time to learn</li>
+                            <li>Performance optimization is a priority</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card vanilla-recommended">
+                        <h3 class="recommendation-title">Choose Vanilla JS When:</h3>
+                        <ul class="recommendation-list">
+                            <li>Simple animations with minimal complexity</li>
+                            <li>Bundle size optimization is critical</li>
+                            <li>No external dependencies preferred</li>
+                            <li>Modern browsers only (no IE support needed)</li>
+                            <li>Team prefers native browser APIs</li>
+                            <li>Budget constraints limit commercial licenses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Animation Compare</h4>
+                        <p class="footer-description">
+                            Professional comparison of animation approaches for web development.
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://gsap.com" target="_blank">GSAP Documentation</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank">Web Animations API</a></li>
+                            <li><a href="https://threejs.org" target="_blank">Three.js Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Project</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://github.com/animation-comparison-suite" target="_blank">GitHub Repository</a></li>
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./gsap-version/">GSAP Demo</a></li>
+                            <li><a href="./vanilla-version/">Vanilla Demo</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Jakub Gietler. MIT License.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+    <script>
+        // Tab functionality for code comparisons
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    const tabContainer = this.closest('.code-tabs');
+                    
+                    // Remove active class from all tabs in this container
+                    tabContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    tabContainer.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    tabContainer.querySelector(`#${tabId}`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

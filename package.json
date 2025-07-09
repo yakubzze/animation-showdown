@@ -1,0 +1,33 @@
+{
+  "name": "gsap-motionjs-vanilla",
+  "version": "1.0.0",
+  "description": "Professional comparison of animation libraries showcasing GSAP and Vanilla CSS/JS with advanced features: ScrollTrigger, stagger animations, SVG path drawing and ThreeJS integration",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "serve": "npm run build && npm run preview",
+    "serve-dist": "serve dist"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2",
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "animation",
+    "gsap",
+    "vanilla-js",
+    "three.js",
+    "scrolltrigger",
+    "comparison",
+    "performance"
+  ],
+  "author": "Jakub",
+  "license": "MIT"
+}

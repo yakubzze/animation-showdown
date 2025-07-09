@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Approaches Comparison | GSAP Library vs Vanilla CSS/JS</title>
+    <meta name="description" content="Professional comparison of animation libraries GSAP vs Vanilla JS with ScrollTrigger, stagger animations and ThreeJS">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="Animation Approaches Comparison | GSAP Library vs Vanilla CSS/JS">
+    <meta property="og:description" content="Professional comparison of animation libraries GSAP vs Vanilla JS with ScrollTrigger, stagger animations and ThreeJS">
+    <meta property="og:image" content="./og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="./">
+    <meta property="twitter:title" content="Animation Approaches Comparison | GSAP Library vs Vanilla CSS/JS">
+    <meta property="twitter:description" content="Professional comparison of animation libraries GSAP vs Vanilla JS with ScrollTrigger, stagger animations and ThreeJS">
+    <meta property="twitter:image" content="./og-image.png">
+
+    <!-- Additional meta tags -->
+    <meta name="keywords" content="animation, gsap, vanilla js, three.js, scrolltrigger, web animation, comparison, performance">
+    <meta name="author" content="Jakub Gietler">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.scss">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Animation Approaches Comparison",
+        "description": "Professional comparison of animation libraries GSAP vs Vanilla JS with ScrollTrigger, stagger animations and ThreeJS",
+        "url": "./",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Jakub Gietler"
+        },
+        "keywords": ["animation", "gsap", "vanilla js", "three.js", "scrolltrigger", "web animation", "comparison", "performance"]
+    }
+    </script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="logo-icon">⚡</div>
+                        <h1 class="logo-text">AnimationCompare</h1>
+                    </div>
+                    <nav class="nav" role="navigation" aria-label="Main navigation">
+                        <a href="#features" class="nav-link" aria-label="Go to features section">Features</a>
+                        <a href="#comparison" class="nav-link" aria-label="Go to comparison section">Comparison</a>
+                        <a href="#analysis" class="nav-link" aria-label="Go to analysis section">Analysis</a>
+                        <a href="#performance" class="nav-link" aria-label="Go to performance section">Performance</a>
+
+                        <a href="https://github.com/animation-comparison-suite" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub repository (opens in new tab)">GitHub</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">
+                            Animation Approaches
+                            <span class="gradient-text">Comparison</span>
+                        </h2>
+                        <p class="hero-subtitle">
+                            Explore the differences between GSAP library and native Vanilla CSS/JS approaches through professional implementations 
+                            with ScrollTrigger, stagger animations, SVG animations and ThreeJS integration.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#comparison" class="btn btn-primary" aria-label="Start animation comparison">
+                                Start Comparison
+                                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                            <a href="./analysis.html" class="btn btn-secondary" aria-label="View detailed analysis">
+                                Detailed Analysis
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="animation-preview">
+                            <div class="preview-grid">
+                                <div class="preview-item" data-library="gsap" role="button" tabindex="0" aria-label="View GSAP implementation">
+                                    <div class="preview-icon" aria-hidden="true">G</div>
+                                    <span class="preview-label">GSAP</span>
+                                </div>
+                                <div class="preview-item" data-library="vanilla" role="button" tabindex="0" aria-label="View Vanilla JS implementation">
+                                    <div class="preview-icon" aria-hidden="true">V</div>
+                                    <span class="preview-label">Vanilla</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Animation Features</h2>
+                    <p class="section-subtitle">
+                        Each implementation demonstrates the same set of advanced animation techniques
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 10s9-4.45 9-10V7l-10-5z"/>
+                                <path d="M12 22s4-6 4-10V7l-4-5-4 5v5c0 4 4 10 4 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">ScrollTrigger</h3>
+                        <p class="feature-description">
+                            Scroll-based animations that trigger at specific viewport positions with precise control
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12h18l-3-3m0 6l3-3"/>
+                                <path d="M3 6h18"/>
+                                <path d="M3 18h18"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Stagger Animations</h3>
+                        <p class="feature-description">
+                            Sequential animations with customizable delays creating smooth cascading effects
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
+                                <path d="M8 12L9.09 18.26L16 19L9.09 19.74L8 26L6.91 19.74L0 19L6.91 18.26L8 12Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">SVG Path Drawing</h3>
+                        <p class="feature-description">
+                            Animated SVG path drawing with stroke-dasharray manipulation for drawing effects
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 10s9-4.45 9-10V7l-10-5z"/>
+                                <path d="M12 12L8 10v4l4 2 4-2v-4l-4-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">ThreeJS Integration</h3>
+                        <p class="feature-description">
+                            3D elements and animations seamlessly integrated with each animation library
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section id="comparison" class="comparison">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Approach Comparison</h2>
+                    <p class="section-subtitle">
+                        Explore each approach to understand the differences in implementation, syntax, and capabilities
+                    </p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <div class="card-header">
+                            <div class="card-icon gsap">G</div>
+                            <h3 class="card-title">GSAP</h3>
+                            <div class="card-badge">Animation Library</div>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">
+                                Professional-grade animation library with ScrollTrigger plugin. 
+                                Features timeline control, easing functions, and performance optimization.
+                            </p>
+                            <ul class="card-features">
+                                <li>Timeline-based animations</li>
+                                <li>ScrollTrigger plugin</li>
+                                <li>Advanced easing functions</li>
+                                <li>Performance optimized</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="./gsap-version/" class="btn btn-primary">
+                                View GSAP Demo
+                                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                            <div class="card-meta">
+                                <span class="meta-item">● Timeline-based control</span>
+                                <span class="meta-item">● ScrollTrigger plugin</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="comparison-card">
+                        <div class="card-header">
+                            <div class="card-icon vanilla">V</div>
+                            <h3 class="card-title">Vanilla</h3>
+                            <div class="card-badge">Native Approach</div>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">
+                                Pure CSS animations with JavaScript control. 
+                                Demonstrates native browser capabilities without external dependencies.
+                            </p>
+                            <ul class="card-features">
+                                <li>No dependencies</li>
+                                <li>CSS animations & transitions</li>
+                                <li>Intersection Observer API</li>
+                                <li>Web Animations API</li>
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a href="./vanilla-version/" class="btn btn-primary">
+                                View Vanilla Demo
+                                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </a>
+                            <div class="card-meta">
+                                <span class="meta-item">● CSS animations & transitions</span>
+                                <span class="meta-item">● Intersection Observer API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Testing Section -->
+        <section id="performance" class="performance">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Live Performance Testing</h2>
+                    <p class="section-subtitle">
+                        Test animation performance in real-time on your device with comprehensive monitoring tools
+                    </p>
+                </div>
+                <div class="performance-content">
+                    <div class="performance-card">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">Real-time Monitoring</h3>
+                        <p class="card-description">
+                            Monitor FPS, memory usage, frame time, and animation count in real-time across all pages
+                        </p>
+                        <div class="performance-features">
+                            <span class="feature-tag">FPS Tracking</span>
+                            <span class="feature-tag">Memory Usage</span>
+                            <span class="feature-tag">Frame Time</span>
+                            <span class="feature-tag">Animation Count</span>
+                        </div>
+                    </div>
+                    <div class="performance-card">
+                        <div class="card-icon">🧪</div>
+                        <h3 class="card-title">Automated Tests</h3>
+                        <p class="card-description">
+                            Run comprehensive performance tests to compare GSAP vs Vanilla JS approaches
+                        </p>
+                        <div class="performance-features">
+                            <span class="feature-tag">Scroll Tests</span>
+                            <span class="feature-tag">Stagger Tests</span>
+                            <span class="feature-tag">SVG Tests</span>
+                            <span class="feature-tag">ThreeJS Tests</span>
+                        </div>
+                    </div>
+                    <div class="performance-card">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">Performance Analysis</h3>
+                        <p class="card-description">
+                            Detailed performance analysis with grading system and recommendations
+                        </p>
+                        <div class="performance-features">
+                            <span class="feature-tag">Grade A-D</span>
+                            <span class="feature-tag">Benchmarks</span>
+                            <span class="feature-tag">Comparison</span>
+                            <span class="feature-tag">Export Data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="performance-instructions">
+                    <h3>How to Use Performance Testing</h3>
+                    <ol class="instructions-list">
+                        <li>Performance monitoring is available on GSAP and Vanilla JS demo pages</li>
+                        <li>Look for the performance panel (─ icon) in the bottom-right corner</li>
+                        <li>Click the ─ button to collapse/expand the panel for better mobile experience</li>
+                        <li>Use "Start" to begin monitoring performance during animations</li>
+                        <li>Navigate between GSAP and Vanilla JS demos to compare performance</li>
+                        <li>Click "Run Tests" to execute automated performance tests</li>
+                        <li>Note: Tests run slower on demo pages due to heavy animations</li>
+                        <li>View detailed analysis and recommendations in the Analysis section</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Analysis Section -->
+        <section id="analysis" class="quick-analysis">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Analysis</h2>
+                    <p class="section-subtitle">
+                        Key differences between GSAP and Vanilla JS approaches at a glance
+                    </p>
+                </div>
+                
+                <div class="quick-analysis-grid">
+                    <div class="analysis-summary-card">
+                        <div class="summary-header">
+                            <div class="summary-icon gsap">G</div>
+                            <h3 class="summary-title">GSAP</h3>
+                        </div>
+                        <div class="summary-content">
+                            <div class="summary-pros">
+                                <h4>Advantages</h4>
+                                <ul>
+                                    <li>Timeline control for complex sequences</li>
+                                    <li>Rich easing functions library</li>
+                                    <li>ScrollTrigger plugin</li>
+                                    <li>Excellent browser compatibility</li>
+                                </ul>
+                            </div>
+                            <div class="summary-cons">
+                                <h4>Considerations</h4>
+                                <ul>
+                                    <li>~80kb bundle size</li>
+                                    <li>Commercial licensing</li>
+                                    <li>Learning curve</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="summary-actions">
+                            <a href="./analysis.html" class="btn btn-primary">Detailed Analysis</a>
+                        </div>
+                    </div>
+
+                    <div class="analysis-summary-card">
+                        <div class="summary-header">
+                            <div class="summary-icon vanilla">V</div>
+                            <h3 class="summary-title">Vanilla JS</h3>
+                        </div>
+                        <div class="summary-content">
+                            <div class="summary-pros">
+                                <h4>Advantages</h4>
+                                <ul>
+                                    <li>Zero dependencies</li>
+                                    <li>Smaller bundle size</li>
+                                    <li>Native browser APIs</li>
+                                    <li>Full control over implementation</li>
+                                </ul>
+                            </div>
+                            <div class="summary-cons">
+                                <h4>Considerations</h4>
+                                <ul>
+                                    <li>More code required</li>
+                                    <li>Limited to modern browsers</li>
+                                    <li>Manual implementation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="summary-actions">
+                            <a href="./analysis.html" class="btn btn-primary">Detailed Analysis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Animation Compare</h4>
+                        <p class="footer-description">
+                            Professional comparison of animation approaches for web development.
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://gsap.com" target="_blank">GSAP Documentation</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank">Web Animations API</a></li>
+                            <li><a href="https://threejs.org" target="_blank">Three.js Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Project</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://github.com/animation-comparison-suite" target="_blank">GitHub Repository</a></li>
+
+                            <li><a href="#comparison">Live Demos</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Jakub Gietler. MIT License.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>

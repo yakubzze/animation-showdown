@@ -1,0 +1,800 @@
+@use '../src/styles/variables' as *;
+
+// GSAP-specific styles
+body {
+  font-family: $font-family-base;
+  line-height: 1.6;
+  color: $gray-800;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.container {
+  @include container;
+}
+
+// Header
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-fixed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $gray-200;
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-4 0;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+    
+    .back-link {
+      @include flex-center;
+      gap: $spacing-2;
+      color: $gray-600;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color $transition-base;
+      
+      &:hover {
+        color: $primary-color;
+      }
+      
+      .back-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    
+    .logo-main {
+      @include flex-center;
+      gap: $spacing-3;
+      
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: $border-radius-base;
+        background: linear-gradient(135deg, #88ce02 0%, #5fa000 100%);
+        @include flex-center;
+        color: $white;
+        font-size: $font-size-xl;
+        font-weight: 700;
+      }
+      
+      .logo-text {
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $gray-900;
+      }
+    }
+  }
+  
+  .nav {
+    display: flex;
+    gap: $spacing-6;
+    
+    .nav-link {
+      color: $gray-700;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color $transition-base;
+      
+      &:hover {
+        color: #88ce02;
+      }
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  padding: 0 0 $spacing-24 0;
+  min-height: 100vh;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-16;
+    align-items: center;
+    
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-12;
+      text-align: center;
+    }
+  }
+  
+  .hero-text {
+    .hero-title {
+      font-size: $font-size-5xl;
+      font-weight: 700;
+      color: $gray-900;
+      margin-bottom: $spacing-6;
+      line-height: 1.1;
+      
+      .title-line {
+        display: block;
+        /* GSAP will set initial state */
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: $font-size-xl;
+      color: $gray-600;
+      margin-bottom: $spacing-8;
+      /* GSAP will set initial state */
+    }
+    
+    .hero-features {
+      display: flex;
+      gap: $spacing-3;
+      flex-wrap: wrap;
+      
+      .feature-tag {
+        background: linear-gradient(135deg, #88ce02 0%, #5fa000 100%);
+        color: $white;
+        padding: $spacing-2 $spacing-4;
+        border-radius: $border-radius-full;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        /* GSAP will set initial state */
+      }
+    }
+  }
+  
+  .hero-visual {
+    @include flex-center;
+    
+    .floating-elements {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      
+      // Particle system
+      .particle-system {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        
+        .particle {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: #88ce02;
+          border-radius: 50%;
+          /* GSAP will set initial state */
+        }
+      }
+      
+      // Orbital system
+      .orbital-system {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        .orbit {
+          position: absolute;
+          border: 1px solid rgba(136, 206, 2, 0.2);
+          border-radius: 50%;
+          
+          &.orbit-1 {
+            width: 120px;
+            height: 120px;
+            top: -60px;
+            left: -60px;
+          }
+          
+          &.orbit-2 {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            left: -100px;
+          }
+          
+          &.orbit-3 {
+            width: 280px;
+            height: 280px;
+            top: -140px;
+            left: -140px;
+          }
+          
+          .orbital-element {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* GSAP will set initial state */
+            
+            .element-circle {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background: linear-gradient(135deg, #88ce02 0%, #5fa000 100%);
+            }
+            
+            .element-square {
+              width: 16px;
+              height: 16px;
+              background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+              border-radius: 2px;
+            }
+            
+            .element-triangle {
+              width: 0;
+              height: 0;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-bottom: 18px solid #f59e0b;
+            }
+            
+            .element-diamond {
+              width: 16px;
+              height: 16px;
+              background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+              transform: rotate(45deg);
+            }
+            
+            .element-star {
+              width: 20px;
+              height: 20px;
+              background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+              clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            }
+            
+            .element-hexagon {
+              width: 18px;
+              height: 18px;
+              background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+              clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+            
+            .element-cross {
+              width: 16px;
+              height: 16px;
+              background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+              clip-path: polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%);
+            }
+            
+            .element-pentagon {
+              width: 16px;
+              height: 16px;
+              background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+              clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            }
+            
+            .element-octagon {
+              width: 16px;
+              height: 16px;
+              background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+              clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            }
+            
+            .element-circle-small {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              background: linear-gradient(135deg, #84cc16 0%, #65a30d 100%);
+            }
+            
+            .element-square-small {
+              width: 10px;
+              height: 10px;
+              background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+              border-radius: 2px;
+            }
+            
+            .element-triangle-small {
+              width: 0;
+              height: 0;
+              border-left: 8px solid transparent;
+              border-right: 8px solid transparent;
+              border-bottom: 14px solid #f59e0b;
+            }
+          }
+        }
+      }
+      
+      // Geometric shapes
+      .geometric-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        .shape {
+          position: absolute;
+          /* GSAP will set initial state */
+          
+          &.shape-1 {
+            top: 10%;
+            left: 10%;
+          }
+          
+          &.shape-2 {
+            top: 20%;
+            right: 15%;
+          }
+          
+          &.shape-3 {
+            bottom: 15%;
+            left: 20%;
+          }
+          
+          &.shape-4 {
+            top: 60%;
+            left: 5%;
+          }
+          
+          &.shape-5 {
+            bottom: 25%;
+            right: 10%;
+          }
+          
+          .shape-inner {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(136, 206, 2, 0.8) 0%, rgba(95, 160, 0, 0.8) 100%);
+            border-radius: 8px;
+            transform: rotate(45deg);
+          }
+        }
+      }
+      
+      // Energy waves
+      .energy-waves {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        .wave {
+          position: absolute;
+          border: 2px solid rgba(136, 206, 2, 0.3);
+          border-radius: 50%;
+          /* GSAP will set initial state */
+          
+          &.wave-1 {
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            left: -50px;
+          }
+          
+          &.wave-2 {
+            width: 160px;
+            height: 160px;
+            top: -80px;
+            left: -80px;
+          }
+          
+          &.wave-3 {
+            width: 220px;
+            height: 220px;
+            top: -110px;
+            left: -110px;
+          }
+        }
+      }
+      
+      // Connection lines
+      .connection-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        
+        .connection-line {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          /* GSAP will set initial state */
+        }
+      }
+    }
+  }
+}
+
+// Stagger Section
+.stagger-section {
+  padding: $spacing-24 0;
+  background: $white;
+  
+  .stagger-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: $spacing-6;
+    
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stagger-item {
+      @include card;
+      padding: $spacing-8;
+      /* GSAP will set initial state */
+      
+      .item-content {
+        .item-number {
+          font-size: $font-size-3xl;
+          font-weight: 700;
+          color: #88ce02;
+          margin-bottom: $spacing-4;
+        }
+        
+        .item-title {
+          font-size: $font-size-xl;
+          font-weight: 600;
+          color: $gray-900;
+          margin-bottom: $spacing-3;
+        }
+        
+        .item-description {
+          color: $gray-600;
+          line-height: 1.7;
+        }
+      }
+    }
+  }
+}
+
+// Path Section
+.path-section {
+  padding: $spacing-24 0;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  
+  .path-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $spacing-12;
+    align-items: center;
+    
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .path-visual {
+    .drawing-svg {
+      width: 100%;
+      height: 400px;
+      background: $white;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-base;
+      
+      .draw-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+      }
+      
+      .path-dot {
+        opacity: 0;
+        transform-origin: center;
+      }
+      
+      .path-text {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+    }
+  }
+  
+  .path-controls {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    
+    .control-btn {
+      @include button-primary;
+      background: linear-gradient(135deg, #88ce02 0%, #5fa000 100%);
+      min-width: 150px;
+    }
+  }
+}
+
+// ThreeJS Section
+.threejs-section {
+  padding: $spacing-24 0;
+  background: $gray-900;
+  color: $white;
+  
+  .section-title {
+    color: $white;
+  }
+  
+  .threejs-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-12;
+    
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .threejs-canvas-container {
+    position: relative;
+    background: $gray-800;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    
+    #threejs-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .canvas-overlay {
+      position: absolute;
+      top: $spacing-4;
+      right: $spacing-4;
+      
+      .stats {
+        display: flex;
+        gap: $spacing-4;
+        
+        .stat-item {
+          background: rgba(0, 0, 0, 0.7);
+          padding: $spacing-2 $spacing-3;
+          border-radius: $border-radius-base;
+          
+          .stat-label {
+            font-size: $font-size-xs;
+            color: $gray-400;
+            display: block;
+          }
+          
+          .stat-value {
+            font-size: $font-size-lg;
+            font-weight: 600;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  
+  .threejs-controls {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+    
+    .control-group {
+      .control-label {
+        display: block;
+        margin-bottom: $spacing-2;
+        font-weight: 500;
+        color: $gray-300;
+      }
+      
+      .control-slider {
+        width: 100%;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 8px;
+        background: $gray-700;
+        border-radius: $border-radius-full;
+        outline: none;
+        
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          background: #88ce02;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        
+        &::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          background: #88ce02;
+          border-radius: 50%;
+          cursor: pointer;
+          border: none;
+        }
+      }
+      
+      .control-btn {
+        @include button-primary;
+        background: linear-gradient(135deg, #88ce02 0%, #5fa000 100%);
+        width: 100%;
+        transition: all 0.3s ease;
+        
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          background: linear-gradient(135deg, $gray-400 0%, $gray-500 100%);
+        }
+      }
+    }
+  }
+}
+
+// Metrics Section removed for cleaner layout
+
+// Code Section
+.code-section {
+  padding: $spacing-24 0;
+  background: $gray-50;
+  
+  .code-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: $spacing-8;
+    
+    .code-example {
+      background: $white;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-base;
+      overflow: hidden;
+      
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacing-4 $spacing-6;
+        background: $gray-800;
+        color: $white;
+        
+        .code-title {
+          font-size: $font-size-lg;
+          font-weight: 600;
+        }
+        
+        .copy-btn {
+          @include button-base;
+          background: $gray-700;
+          color: $white;
+          padding: $spacing-2 $spacing-4;
+          font-size: $font-size-sm;
+          
+          &:hover {
+            background: $gray-600;
+          }
+        }
+      }
+      
+      .code-block {
+        padding: $spacing-6;
+        background: $gray-900;
+        color: $gray-300;
+        font-family: $font-family-mono;
+        font-size: $font-size-sm;
+        line-height: 1.6;
+        overflow-x: auto;
+        
+        code {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background: $gray-900;
+  color: $white;
+  padding: $spacing-16 0;
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-8;
+  }
+  
+  .footer-section {
+    .footer-title {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      margin-bottom: $spacing-4;
+      color: $white;
+    }
+    
+    .footer-description {
+      color: $gray-400;
+      line-height: 1.6;
+      margin-bottom: $spacing-4;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+      
+      li {
+        margin-bottom: $spacing-2;
+        color: $gray-400;
+      }
+      
+      a {
+        color: $gray-400;
+        text-decoration: none;
+        transition: color $transition-base;
+        
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid $gray-700;
+    padding-top: $spacing-8;
+    text-align: center;
+    color: $gray-500;
+    font-size: $font-size-sm;
+    font-weight: 400;
+  }
+}
+
+// Section headers
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+  
+  .section-title {
+    font-size: $font-size-4xl;
+    font-weight: 700;
+    color: $gray-900;
+    margin-bottom: $spacing-4;
+  }
+  
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $gray-600;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// Responsive design
+@media (max-width: $breakpoint-md) {
+  .header .nav {
+    display: none;
+  }
+  
+  .hero .hero-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .stagger-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .path-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .threejs-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .code-examples {
+    grid-template-columns: 1fr;
+  }
+}
