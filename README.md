@@ -8,7 +8,7 @@ Technical comparison of animation libraries showcasing **GSAP** and **Vanilla CS
 ```bash
 # Clone repository
 git clone https://github.com/Yakubzie/animation-showdown.git
-cd gsap-motionjs-vanilla
+cd animation-showdown
 
 # Install dependencies
 npm install
