@@ -2,6 +2,15 @@
 
 Technical comparison of animation libraries showcasing **GSAP** and **Vanilla CSS/JS** with advanced features: ScrollTrigger, stagger animations, SVG path drawing and ThreeJS integration. Includes comprehensive performance analysis and implementation comparisons.
 
+## 🌐 Live Demo
+
+**View the live project:** [GitHub Pages Demo](https://yakubzie.github.io/animation-showdown/)
+
+- **Main Page**: GSAP vs Vanilla CSS/JS animation comparison
+- **Performance Analysis**: Detailed benchmarks and metrics
+- **GSAP Demo**: Implementation with GSAP library
+- **Vanilla Demo**: Implementation with pure CSS/JS
+
 ## 🚀 Quick Start
 
 ### Development Mode
@@ -48,21 +57,26 @@ Navigate to `http://localhost:3000` to view the production build.
 ### Core Animations
 - **ScrollTrigger**: Scroll-based animations with precise viewport triggers
 - **Stagger Animations**: Sequential animations with customizable delays
-- **SVG Path Drawing**: Animated stroke-dasharray effects
+- **SVG Path Drawing**: Animated stroke-dasharray effects and morphing techniques
 - **ThreeJS Integration**: 3D animations synchronized with 2D libraries
-- **Performance Monitoring**: Real-time FPS and memory usage tracking (available on demo pages only)
 - **Intersection Observer**: Native scroll-based triggers
 - **Web Animations API**: JavaScript animation control
-- **Responsive Design**: Mobile-first approach
+- **Responsive Design**: Mobile-first approach with adaptive layouts
 
 ### Implementation Comparisons
 - **GSAP**: Industry-standard animation library with timeline control
-- **Vanilla CSS/JS**: Pure browser APIs with Intersection Observer
+- **Vanilla CSS/JS**: Pure browser APIs with no external dependencies
 - **Performance Analysis**: Detailed benchmarks and metrics comparison
 - **Code Examples**: Side-by-side implementation comparisons
-- **ThreeJS Integration**: 3D animations with both approaches
-- **SVG Animations**: Path drawing and morphing techniques
-- **Accessibility**: Respects user preferences
+- **Accessibility**: Respects user preferences and `prefers-reduced-motion`
+
+### Performance Monitoring System
+- **Real-time Metrics**: Live FPS, memory usage, frame time, and animation count tracking
+- **Collapsible Interface**: Minimizable performance panel with standard window controls (─/□ icons)
+- **Mobile Responsive**: Adaptive layout that collapses to corner on mobile devices
+- **Automated Testing**: Built-in performance tests for scroll, stagger, and SVG animations
+- **Visual Feedback**: Color-coded metrics (green for good, yellow for warning, red for poor)
+- **Export Capabilities**: Performance data export for analysis
 
 ## 🏗️ Architecture
 
@@ -166,9 +180,6 @@ const observer = new IntersectionObserver((entries) => {
 - **CPU Usage**: Performance monitoring
 - **Load Time**: Page load optimization
 - **Rendering Performance**: GPU acceleration metrics
-- **Collapsible UI**: Minimizable performance panel with standard window controls
-- **Mobile Responsive**: Adaptive layout for mobile devices
-- **Real-time Tests**: Automated performance testing with detailed reports
 
 ## 🔍 Detailed Analysis
 
@@ -180,9 +191,6 @@ The project includes a comprehensive analysis page (`analysis.html`) featuring d
 - **Browser Compatibility**: Support matrix for different browsers
 - **Load Time Comparison**: Page load performance metrics
 - **Memory Usage Analysis**: JavaScript heap monitoring
-- **Real-time Monitoring**: Live performance tracking with collapsible UI
-- **Mobile Optimization**: Responsive performance panel for mobile devices
-- **Standard Controls**: Familiar minimize/maximize icons for intuitive interaction
 
 ### Implementation Comparisons
 - **Code Examples**: Side-by-side GSAP vs Vanilla JS implementations
@@ -198,22 +206,12 @@ The project includes a comprehensive analysis page (`analysis.html`) featuring d
 - **Community Support**: Available resources and documentation
 - **Use Case Recommendations**: When to choose each approach
 - **Development Setup**: Quick start guide
-- **Debugging Tools**: Performance monitoring utilities with collapsible interface
+- **Debugging Tools**: Performance monitoring utilities
 - **Best Practices**: Industry standards and recommendations
 
-## 📊 Performance Monitor
+## 📊 Performance Monitor Usage
 
-### Features
-The project includes a comprehensive performance monitoring system available on demo pages:
-
-- **Real-time Metrics**: Live FPS, memory usage, frame time, and animation count tracking
-- **Collapsible Interface**: Minimizable panel with standard window controls (─/□ icons)
-- **Mobile Responsive**: Adaptive layout that collapses to corner on mobile devices
-- **Automated Testing**: Built-in performance tests for scroll, stagger, and SVG animations
-- **Visual Feedback**: Color-coded metrics (green for good, yellow for warning, red for poor)
-- **Export Capabilities**: Performance data export for analysis
-
-### Usage
+### Getting Started
 1. Navigate to GSAP or Vanilla JS demo pages
 2. Look for the performance panel (─ icon) in the bottom-right corner
 3. Click the minimize button to collapse/expand the panel
@@ -417,9 +415,6 @@ dist/
 - **Asset Optimization**: Automatic compression
 - **Caching Strategy**: Proper cache headers
 - **Static Hosting**: Ready for GitHub Pages, Netlify, Vercel
-- **Performance Monitoring**: Built-in metrics with collapsible UI
-- **Mobile Optimization**: Responsive performance panel
-- **Bundle Analysis**: Performance impact tracking
 - **Gzip Compression**: Automatic compression for faster loading
 
 ## 🤝 Contributing
@@ -437,13 +432,13 @@ Get started with development:
 9. Open a Pull Request
 
 ### Code Style
-- Follow existing code patterns
-- Use meaningful commit messages
-- Test your changes locally
-- Update documentation if needed
-- Follow SCSS naming conventions
-- Use semantic HTML structure
-- Maintain accessibility standards
+- Followed existing code patterns
+- Used meaningful commit messages
+- Tested changes locally
+- Updated documentation if needed
+- Followed SCSS naming conventions
+- Used semantic HTML structure
+- Maintained accessibility standards
 
 ## 📄 License
 

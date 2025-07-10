@@ -112,6 +112,7 @@ function initPathAnimations() {
         const pathLength = path.getTotalLength();
         path.style.strokeDasharray = pathLength;
         path.style.strokeDashoffset = pathLength;
+        path.style.setProperty('--path-length', pathLength);
         
         // Set up intersection observer for path section
         const pathObserver = new IntersectionObserver((entries) => {
@@ -314,6 +315,7 @@ function initControls() {
                 // Set initial state for forward animation
                 const pathLength = path.getTotalLength();
                 path.style.strokeDashoffset = pathLength;
+                path.style.setProperty('--path-length', pathLength);
                 
                 // Re-add forward animation
                 path.classList.add('animate');
@@ -381,6 +383,7 @@ function initControls() {
                 // Reset stroke offset
                 const pathLength = path.getTotalLength();
                 path.style.strokeDashoffset = pathLength;
+                path.style.setProperty('--path-length', pathLength);
                 pathAnimationState = 'stopped';
                 
                 // Restart animation

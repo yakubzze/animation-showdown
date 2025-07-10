@@ -16,7 +16,9 @@
     "three": "^0.158.0"
   },
   "devDependencies": {
+    "rollup": "^4.16.4",
     "sass": "^1.69.5",
+    "terser": "^5.43.1",
     "vite": "^6.3.5"
   },
   "keywords": [
@@ -28,6 +30,6 @@
     "comparison",
     "performance"
   ],
-  "author": "Jakub",
+  "author": "Jakub Gietler",
   "license": "MIT"
 }

@@ -1811,6 +1811,16 @@ body {
   .performance-testing {
     background: linear-gradient(135deg, $gray-900 0%, $gray-800 100%);
     
+    .section-header {
+      .section-title {
+        color: $white;
+      }
+      
+      .section-subtitle {
+        color: $gray-400;
+      }
+    }
+    
     .testing-card {
       background: $gray-800;
       border-color: $gray-700;

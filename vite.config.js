@@ -30,7 +30,9 @@ export default defineConfig({
       }
     },
     outDir: 'dist',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    target: 'es2015',
+    minify: 'terser'
   },
   css: {
     preprocessorOptions: {
