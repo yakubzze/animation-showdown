@@ -80,6 +80,7 @@ export class PerformanceUI {
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         min-width: 280px;
+        max-height: 80vh;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         transition: all 0.6s ease;
         overflow: hidden;
@@ -145,9 +146,29 @@ export class PerformanceUI {
 
       .performance-content {
         transition: all 0.6s ease;
-        max-height: 500px;
+        max-height: 600px;
         opacity: 1;
         transform: translateY(0);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .performance-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .performance-content::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+      }
+
+      .performance-content::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.5);
+        border-radius: 3px;
+      }
+
+      .performance-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.7);
       }
 
       .performance-metrics {
@@ -214,6 +235,13 @@ export class PerformanceUI {
       .performance-results {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 12px;
+      }
+
+      .performance-results h4 {
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #f3f4f6;
       }
 
       .test-result {
@@ -284,6 +312,40 @@ export class PerformanceUI {
         color: #ef4444;
       }
 
+      .performance-grade {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      .performance-grade.grade-a {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+      }
+
+      .performance-grade.grade-b {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+
+      .performance-grade.grade-c {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+      }
+
+      .performance-grade.grade-d {
+        background: rgba(239, 115, 22, 0.2);
+        color: #f97316;
+      }
+
+      .performance-grade.grade-f {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+
       /* Mobile responsiveness */
       @media (max-width: 768px) {
         .performance-panel {
@@ -298,6 +360,10 @@ export class PerformanceUI {
           left: auto;
           right: 10px;
           width: auto;
+        }
+
+        .performance-content {
+          max-height: 500px;
         }
 
         .performance-controls {
