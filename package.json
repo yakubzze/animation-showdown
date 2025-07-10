@@ -1,5 +1,5 @@
 {
-  "name": "gsap-motionjs-vanilla",
+  "name": "animation-showdown",
   "version": "1.0.0",
   "description": "Professional comparison of animation libraries showcasing GSAP and Vanilla CSS/JS with advanced features: ScrollTrigger, stagger animations, SVG path drawing and ThreeJS integration",
   "type": "module",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "sass": "^1.69.5",
-    "vite": "^5.0.0"
+    "vite": "^6.3.5"
   },
   "keywords": [
     "animation",
