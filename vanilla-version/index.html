@@ -50,6 +50,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <style>
+      body { visibility: hidden; }
+    </style>
 </head>
 <body>
     <div class="app">
@@ -329,50 +332,49 @@
                 <div class="code-examples">
                     <div class="code-example">
                         <div class="code-header">
-                            <h3 class="code-title">Intersection Observer</h3>
+                            <h3 class="code-title">ScrollTrigger (Intersection Observer)</h3>
                         </div>
-                        <pre class="code-block"><code>const observer = new IntersectionObserver((entries) => {
+                        <pre class="code-block"><code>// Scroll-triggered animation
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('animate-in');
     }
   });
+}, {
+  threshold: 0.1
 });
 
-observer.observe(element);</code></pre>
-                    </div>
-                    <div class="code-example">
-                        <div class="code-header">
-                            <h3 class="code-title">Web Animations API</h3>
-                        </div>
-                        <pre class="code-block"><code>element.animate([
-  { transform: 'translateY(50px)', opacity: 0 },
-  { transform: 'translateY(0)', opacity: 1 }
-], {
-  duration: 600,
-  easing: 'ease-out',
-  fill: 'forwards'
+document.querySelectorAll('.stagger-item').forEach(item => {
+  observer.observe(item);
 });</code></pre>
                     </div>
                     <div class="code-example">
                         <div class="code-header">
-                            <h3 class="code-title">CSS Animations</h3>
+                            <h3 class="code-title">SVG Path Animation</h3>
                         </div>
-                        <pre class="code-block"><code>@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+                        <pre class="code-block"><code>// SVG path drawing (vanilla JS)
+const path = document.querySelector('.draw-path');
+const pathLength = path.getTotalLength();
 
-.stagger-item {
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: calc(var(--index) * 0.1s);
-}</code></pre>
+path.style.strokeDasharray = pathLength;
+path.style.strokeDashoffset = pathLength;
+
+// Animate with CSS transition or JS
+path.classList.add('animate'); // .animate { stroke-dashoffset: 0; transition: stroke-dashoffset 3s; }</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <h3 class="code-title">ThreeJS Integration</h3>
+                        </div>
+                        <pre class="code-block"><code>// ThreeJS animation (vanilla JS)
+function animate() {
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();</code></pre>
                     </div>
                 </div>
             </div>
@@ -410,5 +412,10 @@ observer.observe(element);</code></pre>
     </div>
 
     <script type="module" src="./main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.visibility = 'visible';
+      });
+    </script>
 </body>
 </html>
