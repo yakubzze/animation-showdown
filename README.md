@@ -4,7 +4,7 @@ Technical comparison of animation libraries showcasing **GSAP** and **Vanilla CS
 
 ## 🌐 Live Demo
 
-**View the live project:** [GitHub Pages Demo](https://yakubzie.github.io/animation-showdown/)
+**View the live project:** [GitHub Pages Demo](https://yakubzze.github.io/animation-showdown/)
 
 - **Main Page**: GSAP vs Vanilla CSS/JS animation comparison
 - **Performance Analysis**: Detailed benchmarks and metrics
